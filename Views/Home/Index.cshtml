@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AjaxBasicCRUDDemo.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container" id="itemList">
+    <p>
+        <div>
+            <button type="button" class="btn btn-outline-success" id="btnAdd">
+                Add New
+            </button>
+        </div>
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody id="tblBody">
+        @*data comes from ajax*@
+    </tbody>
+</table>
+</div>
+<div id="newRecord" style="display:none" class="container">
+    @Html.Partial("_AddRecordPartial")
+    </div>
+
+@*<div id="editRecord" style="display:none" class="container">
+    @Html.Partial("_EditRecordPartial")
+</div>*@
+
+@*scripts*@
+<script src="~/Scripts/MyCrud.js"></script>
+<script>
+    $(document).ready(() => {
+        loadItems();
+    })
+</script>
+
+
